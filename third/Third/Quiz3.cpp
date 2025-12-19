@@ -85,7 +85,7 @@ int main()
 	Inventory<Item> inventory;
 
 	for (int i = 0; i < 10; i++) {
-		inventory.AddItem(Item("Hello Item" + to_string(i), 100));
+		inventory.AddItem(Item("Hello Item" + to_string(i), i * 100));
 	}
 	inventory.RemoeveLastItem();
 	inventory.PrintAllItems();
