@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 using namespace std;
 class Item
@@ -25,7 +25,7 @@ public:
 	}
 
 	void PrintInfo() const {
-		cout << "[ÀÌ¸§: " << name_ << ", °¡°Ý: " << price_ << "G]" << endl;
+		cout << "[ì´ë¦„: " << name_ << ", ê°€ê²©: " << price_ << "G]" << endl;
 	}
 
 
@@ -49,7 +49,7 @@ public:
 
 	void AddItem(T item) {
 		if (size_ >= capacity_) {
-			cout << "ÀÎº¥Åä¸®°¡ ²Ë Ã¡½À´Ï´Ù!" << endl;
+			cout << "ì¸ë²¤í† ë¦¬ê°€ ê½‰ ì°¼ìŠµë‹ˆë‹¤!" << endl;
 			return;
 		}
 		pItems_[size_++] = item;
@@ -57,7 +57,7 @@ public:
 
 	void RemoeveLastItem() {
 		if (size_ <= 0) {
-			cout << "ÀÎº¥Åä¸®°¡ ºñ¾îÀÖ½À´Ï´Ù." << endl;
+			cout << "ì¸ë²¤í† ë¦¬ê°€ ë¹„ì–´ìžˆìŠµë‹ˆë‹¤." << endl;
 		}
 		size_--;
 	}
@@ -69,7 +69,11 @@ public:
 	}
 
 	void PrintAllItems() {
-		for (int i = 0; i < size_; i++) {
+		if (size_ == 0) {
+			cout << "(ë¹„ì–´ìžˆìŒ)" << endl;
+			return;
+		}
+		for (int i = 0; i <= size_-1; i++) {
 			pItems_[i].PrintInfo();
 		}
 	}
@@ -84,7 +88,7 @@ int main()
 {
 	Inventory<Item> inventory;
 
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 5; i++) {
 		inventory.AddItem(Item("Hello Item" + to_string(i), i * 100));
 	}
 	inventory.RemoeveLastItem();
