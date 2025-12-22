@@ -60,7 +60,7 @@ void PrintInfo() const {
 
 <img width="255" height="230" alt="Image" src="https://github.com/user-attachments/assets/b0a050bf-ae28-40d6-8d8f-c35c349adab9" />
 
-## 1️⃣ 도전 기능
+## 2️⃣ 도전 기능
 - **복사 생성자 및 대입(Assign) 함수 구현:**
     - 인벤토리가 복사/대입될 때, 아이템 데이터가 그대로 복사되는 깊은 복사(Deep Copy)를 구현합니다.
     - `Inventory(const Inventory<T>& other);` (복사 생성자)
