@@ -60,3 +60,38 @@ void PrintInfo() const {
 
 <img width="255" height="230" alt="Image" src="https://github.com/user-attachments/assets/b0a050bf-ae28-40d6-8d8f-c35c349adab9" />
 
+## 1️⃣ 도전 기능
+- **복사 생성자 및 대입(Assign) 함수 구현:**
+    - 인벤토리가 복사/대입될 때, 아이템 데이터가 그대로 복사되는 깊은 복사(Deep Copy)를 구현합니다.
+    - `Inventory(const Inventory<T>& other);` (복사 생성자)
+        - 객체가 생성+초기화될 때 호출
+        - `void Assign(const Inventory<T>& other);` (대입 역할을 하는 함수)
+            - 이미 존재하는 객체에 값을 덮어쓸 때 호출
+```
+// 복사 생성자
+Inventory(const Inventory<T>& other) {
+    capacity_ = other.capacity_;
+    size_ = other.size_;
+    pItems_ = new T[capacity_];
+    for (int i = 0; i < size_; ++i) {
+        pItems_[i] = other.pItems_[i];
+    }
+    cout << "인벤토리 복사 완료" << endl;
+}
+```
+
+- **`AddItem` 기능 확장:**
+    - 인벤토리가 꽉 찬 상태에서 `AddItem`이 호출되면, 기존 `capacity`의 **2배** 크기로 인벤토리를 확장하고 새로운 아이템을 추가합니다. (기존 아이템들은 모두 유지되어야 합니다.)
+- **`Resize` 멤버 함수 추가:**
+    - `void Resize(int newCapacity)`: 인벤토리의 `capacity`를 `newCapacity`로 변경합니다.
+- **`SortItems` 멤버 함수 추가:**
+    - `void SortItems()`: 인벤토리의 아이템들을 **가격 오름차순**으로 정렬합니다. 
+    이 기능은 C++ 표준 라이브러리의 `std::sort` 알고리즘을 활용하며, 정렬 기준을 정의하기 위해 클래스 외부에 별도로 작성된 비교 함수(`compareItemsByPrice`)를 `std::sort`에 전달합니다.
+```
+//두 Item 객체를 받아 가격을 기준으로 어떤 것이 먼저 와야 하는지 판단
+bool compareItemsByPrice(const Item& a, const Item& b) {
+    return a.GetPrice() < b.GetPrice();
+}
+```
+
+<img width="337" height="361" alt="Image" src="https://github.com/user-attachments/assets/f7eb4001-2f64-4cce-8743-71b0add74f03" />
